@@ -1,0 +1,136 @@
+<body data-author="freeman_lex">
+<div class="question-answer">
+    <div class="question">
+        I have no idea how to start solving this mission.
+    </div>
+    <div class="answer">
+        <p>
+            Catch an idea 💡! Use recursive approach. Iterate over the given string and for each character concatenate remaining characters and for shorter string call the function again. Join each returned variant with character above and add a result into general sequence, which sort and return later. 
+        </p>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        Ok, what should I start from?
+    </div>
+    <div class="answer">
+        <p>
+            First, you need to define the edge case, when <b class="code">s</b> remains equal 0 or 1. In this case you just return <b class="code">s</b>. 
+        </p>
+        <pre class="brush: javascript">
+if len(s) < 2: return [s]
+        </pre>
+        <p>
+            Declare a variable to store all your permutations with the initial value of empty array.
+        </p>
+        <pre class="brush: javascript">
+const all = [];
+        </pre>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        What to do next?
+    </div>
+    <div class="answer">
+        <p>
+            Now you need to iterate over the given string to get every character with <b class="code">for</b> loop. 
+        </p>
+        <pre class="brush: javascript">
+for (let i = 0; i < s.length; i++) {
+    ...
+}
+        </pre>
+        <p>
+            Get each character and build the remaining string using <a target="_blank" href="https://www.w3schools.com/jsref/jsref_slice_string.asp">slicing</a>.
+        </p>
+        <pre class="brush: javascript">
+const char = s[i];
+const remainingChars = s.slice(0, i) + s.slice(i + 1);
+        </pre>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        I still need a hint.
+    </div>
+    <div class="answer">
+        <p>
+            Now inside above loop you need to create permutations for this shorter string and iterate over each of them. Use <b class="code">for</b> loop again and call the same function.
+        </p>
+        <pre class="brush: javascript">
+for (const perm of stringPermutations(remainingChars)) {
+    ...
+}
+        </pre>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        What should I do now?
+    </div>
+    <div class="answer">
+        <p>
+            Concatenate the separated above character and each of permutations <b class="code">perm</b> of shorter string. In such way through nested recursion you build all unique variants. Add the result into you general list <b class="code">all</b>.  
+        </p>
+        <pre class="brush: javascript">
+all.push(char + perm);
+        </pre>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        So, how my final solution should look like?
+    </div>
+    <div class="answer">
+        <p>
+            You just need to join all previous hints, return sorted general list and wrap your code into function expression. Using type hints for input and output data are highly recommended.
+        </p>
+        <p>Here is the whole solution:</p>
+        <div class="spoiler">
+        <pre class="brush: javascript">
+function stringPermutations(s: string): string[] {
+
+    if (s.length <= 1) return [s];
+    const all = [];
+    for (let i = 0; i < s.length; i++) {
+        const char = s[i];
+        const remainingChars = s.slice(0, i) + s.slice(i + 1);
+        for (const perm of stringPermutations(remainingChars)) {
+            all.push(char + perm);
+        }
+    }
+    return all.sort();
+}
+        </pre>
+        </div>
+        <p>Click <b>Best Solutions</b> at mission menu and see a lot of other interesting solutions!</p>
+    </div>
+</div>
+<!-- <div class="question-answer">
+    <div class="question">
+        Show me more solutions!<br />
+        'Cause I wanna be a real 🥇 Javascript Hero!
+    </div>
+    <div class="answer">
+        <p>Sure, grab it!</p>
+        <p>
+
+        </p>
+        <div class="spoiler">
+        <pre class="brush: javascript">
+
+        </pre>
+        </div>
+        <p>Click <b>Best Solutions</b> at mission menu and see a lot of other interesting solutions!</p>
+    </div>
+</div> -->
+<div class="question-answer">
+    <div class="question">
+        Thanks! I know and understand more now! Everything works fine!
+    </div>
+    <div class="answer">
+        Glad to hear it 👍!
+    </div>
+</div>
+</body>
