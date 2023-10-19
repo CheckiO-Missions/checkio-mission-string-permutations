@@ -1,0 +1,138 @@
+<body data-author="freeman_lex">
+<div class="question-answer">
+    <div class="question">
+        Je n'ai aucune idée de la manière de commencer à résoudre cette mission.
+    </div>
+    <div class="answer">
+        <p>
+            Attrapez une idée 💡! Utilisez une approche récursive. Itérer sur la chaîne donnée et pour chaque caractère concaténer les caractères restants et pour une chaîne plus courte appeler la fonction à nouveau. Joignez chaque variante renvoyée au caractère précédent et ajoutez un résultat dans une séquence générale, que vous trierez et renverrez plus tard. 
+        </p>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        Ok, par quoi dois-je commencer?
+    </div>
+    <div class="answer">
+        <p>
+            Tout d'abord, vous devez définir le cas limite, lorsque <b class="code">s</b> reste égal à 0 ou 1. Dans ce cas, vous renvoyez simplement <b class="code">s</b>. 
+        </p>
+        <pre class="brush: python">
+if len(s) < 2: return [s]
+        </pre>
+        <p>
+            Déclarez une variable pour stocker toutes vos permutations avec la valeur initiale de la liste vide.
+        </p>
+        <pre class="brush: python">
+all = []
+        </pre>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        Que faire ensuite?
+    </div>
+    <div class="answer">
+        <p>
+            Vous devez maintenant itérer sur la chaîne donnée pour obtenir chaque caractère. Utilisez la boucle <b class="code">for</b> et la fonction <a target="_blank" href="https://www.w3schools.com/python/ref_func_enumerate.asp">enumerate()</a> pour obtenir à la fois des index et des caractères. 
+        </p>
+        <pre class="brush: python">
+for i, char in enumerate(s):
+    ...
+        </pre>
+        <p>
+            Pour chaque caractère, construisez la chaîne restante en utilisant le découpage en tranches.
+        </p>
+        <pre class="brush: python">
+remaining_chars = s[:i] + s[i + 1:]
+        </pre>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        J'ai encore besoin d'un indice.
+    </div>
+    <div class="answer">
+        <p>
+            À l'intérieur de la boucle ci-dessus, vous devez créer des permutations pour cette chaîne plus courte et itérer sur chacune d'entre elles. Utilisez à nouveau la boucle <b class="code">for</b> et appelez la même fonction.
+        </p>
+        <pre class="brush: python">
+for perm in string_permutations(remaining_chars):
+    ...
+        </pre>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        Que dois-je faire maintenant?
+    </div>
+    <div class="answer">
+        <p>
+            Concaténer les caractères séparés ci-dessus et chacune des permutations <b class="code">perm</b> de la chaîne la plus courte. De cette manière, par récursion imbriquée, vous créez toutes les variantes uniques. Ajoutez le résultat à votre liste générale <b class="code">all</b>.  
+        </p>
+        <pre class="brush: python">
+all.append(char + perm)
+        </pre>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        Alors, à quoi devrait ressembler ma solution finale?
+    </div>
+    <div class="answer">
+        <p>
+            Il vous suffit de joindre tous les indices précédents, de renvoyer une liste générale triée et d'envelopper votre code dans une expression de fonction. Il est fortement recommandé d'utiliser des indices de type pour les données d'entrée et de sortie.
+        </p>
+        <p>Voici la solution complète:</p>
+        <div class="spoiler">
+        <pre class="brush: python">
+from collections.abc import Iterable
+
+
+def string_permutations(s: str) -> Iterable[str]:
+    
+    if len(s) < 2: return [s]
+    all = []
+    for i, char in enumerate(s):
+        remaining_chars = s[:i] + s[i + 1:]
+        for perm in string_permutations(remaining_chars):
+            all.append(char + perm)
+    
+    return sorted(all)
+        </pre>
+        </div>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        Montrez-moi d'autres solutions!<br />
+        parce que je veux être une vraie 🥇 Python Ninnjaa!
+    </div>
+    <div class="answer">
+        <p>Bien sûr, prenez-le!</p>
+        <p>
+            Utilisez le module standard <b class="code">itertools</b> et la fonction <b class="code">permutations</b> pour générer toutes les variantes, réunissez chacune d'entre elles en une seule chaîne (puisque chacune d'entre elles est un tuple) avec la fonction <b class="code">map</b> et renvoyez une liste triée.
+        </p>
+        <div class="spoiler">
+        <pre class="brush: python">
+from collections.abc import Iterable
+from itertools import permutations
+
+
+def string_permutations(s: str) -> Iterable[str]:
+    
+    return sorted(map("".join, permutations(s)))
+        </pre>
+        </div>
+        <p>Cliquez sur <b>Best Solutions</b> dans le menu mission et découvrez de nombreuses autres solutions intéressantes!</p>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        Merci beaucoup! Je comprends mieux maintenant! Tout fonctionne bien!
+    </div>
+    <div class="answer">
+        Heureux de l'apprendre 👍!
+    </div>
+</div>
+</body>
