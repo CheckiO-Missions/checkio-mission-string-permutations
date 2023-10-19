@@ -1,0 +1,45 @@
+<!-- Describe task in general -->
+
+<p>
+    给定一个字符串，按字母顺序返回所有可能的<a target="_blank" href="https://en.wikipedia.org/wiki/Permutation">permutations</a> 字符。
+</p>
+
+<p style="text-align: center;">
+    <img  title="example" src="{{MEDIA}}all-permut.png" alt="example" style="max-height: 300px"/>
+</p>
+
+<!-- Explain input and output values -->
+<p>
+   <strong>输入：</strong>字符串 <span>(str{% if is_js %}ing{% endif %})</span>.
+</p>
+
+<p>
+   <strong>输出：</strong> {% if is_js %}数组{% else %}可迭代{% endif %} <span>({% if is_js %}Array{% else %}Iterable{% endif %})</span>的字符串 <span>(str{% if is_js %}ing{% endif %})</span>. 
+</p>
+
+<p>
+    <strong>示例</strong>
+</p>
+
+<pre class="brush: {% if is_js %}javascript{% else %}python{% endif %}">{{init_code_tmpl}}</pre>
+
+<!-- Here you can explain how it can be used in development -->
+<!-- The section is optional -->
+<p class="for_info_only">
+
+    <strong>如何使用：</strong>
+    <ul>
+        <li><i>拼字游戏和拼字游戏（如拼字游戏）中的单词组合；</i></li>
+        <li><i>密码学中测试一组字符的可能密钥；</i></li>
+        <li><i>遗传学中的数据分析，寻找可能的基因组合。</i></li>
+    </ul>
+</p>
+
+<!-- Here you can explain some constraints for input-->
+<!-- The section is optional -->
+<!-- <p>
+    <strong>Preconditions:</strong>
+    <ul>
+    <li><i>both given ints should be between -1000 and 1000</i></li>
+    </ul>
+</p> -->
