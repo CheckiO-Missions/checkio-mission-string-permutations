@@ -1,0 +1,136 @@
+<body data-author="freeman_lex">
+<div class="question-answer">
+    <div class="question">
+        我不知道如何开始解决这个任务。
+    </div>
+    <div class="answer">
+        <p>
+            抓住一个想法💡！使用递归方法。对给定字符串进行迭代，对每个字符连接剩余的字符，对于较短的字符串再次调用函数。将返回的每个变体与上面的字符连接起来，并将结果添加到一般序列中，然后进行排序并返回。 
+        </p>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        好吧，我应该从哪里开始呢？
+    </div>
+    <div class="answer">
+        <p>
+            首先，你需要定义一种边缘情况，即<b class="code">s</b> 仍然等于 0 或 1。在这种情况下，你只需返回<b class="code">s</b> 。 
+        </p>
+        <pre class="brush: javascript">
+if len(s) < 2: return [s]
+        </pre>
+        <p>
+            声明一个变量，以空数组的初始值存储所有排列。
+        </p>
+        <pre class="brush: javascript">
+const all = [];
+        </pre>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        接下来要做什么？
+    </div>
+    <div class="answer">
+        <p>
+            现在，您需要遍历给定的字符串，通过<b class="code">for</b> 循环获取每个字符。 
+        </p>
+        <pre class="brush: javascript">
+for (let i = 0; i < s.length; i++) {
+    ...
+}
+        </pre>
+        <p>
+            获取每个字符，然后使用<a target="_blank" href="https://www.w3schools.com/jsref/jsref_slice_string.asp">slicing</a> 创建剩余的字符串。
+        </p>
+        <pre class="brush: javascript">
+const char = s[i];
+const remainingChars = s.slice(0, i) + s.slice(i + 1);
+        </pre>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        我还需要提示。
+    </div>
+    <div class="answer">
+        <p>
+            现在，在上述循环中，你需要为这个较短的字符串创建排列组合，并对每个排列组合进行遍历。再次使用<b class="code">for</b> 循环并调用相同的函数。
+        </p>
+        <pre class="brush: javascript">
+for (const perm of stringPermutations(remainingChars)) {
+    ...
+}
+        </pre>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        我现在应该做什么？
+    </div>
+    <div class="answer">
+        <p>
+            将分隔的上述字符和较短字符串的每种排列<b class="code">perm</b> 合并。这样，通过嵌套递归，就可以建立所有独特的变体。将结果添加到总列表<b class="code">all</b> 中。  
+        </p>
+        <pre class="brush: javascript">
+all.push(char + perm);
+        </pre>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        那么，我的最终解决方案应该是怎样的呢？
+    </div>
+    <div class="answer">
+        <p>
+            您只需将之前的所有提示连接起来，返回排序后的总列表，并将代码封装成函数表达式。强烈建议对输入和输出数据使用类型提示。
+        </p>
+        <p>下面是整个解决方案：</p>
+        <div class="spoiler">
+        <pre class="brush: javascript">
+function stringPermutations(s: string): string[] {
+
+    if (s.length <= 1) return [s];
+    const all = [];
+    for (let i = 0; i < s.length; i++) {
+        const char = s[i];
+        const remainingChars = s.slice(0, i) + s.slice(i + 1);
+        for (const perm of stringPermutations(remainingChars)) {
+            all.push(char + perm);
+        }
+    }
+    return all.sort();
+}
+        </pre>
+        </div>
+        <p>点击任务菜单<b>Best Solutions</b> ，查看更多有趣的解决方案！</p>
+    </div>
+</div>
+<!-- <div class="question-answer">
+    <div class="question">
+        Show me more solutions!<br />
+        'Cause I wanna be a real 🥇 Javascript Hero!
+    </div>
+    <div class="answer">
+        <p>Sure, grab it!</p>
+        <p>
+
+        </p>
+        <div class="spoiler">
+        <pre class="brush: javascript">
+
+        </pre>
+        </div>
+        <p>Click <b>Best Solutions</b> at mission menu and see a lot of other interesting solutions!</p>
+    </div>
+</div> -->
+<div class="question-answer">
+    <div class="question">
+        谢谢！我现在知道并理解得更多了！一切正常！
+    </div>
+    <div class="answer">
+        很高兴听到这个消息 👍！
+    </div>
+</div>
+</body>
