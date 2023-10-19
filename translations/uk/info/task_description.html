@@ -1,0 +1,45 @@
+<!-- Describe task in general -->
+
+<p>
+    За заданим рядком виведіть усі можливі <a target="_blank" href="https://en.wikipedia.org/wiki/Permutation">permutations</a> його символів, відсортовані за алфавітом.
+</p>
+
+<p style="text-align: center;">
+    <img  title="example" src="{{MEDIA}}all-permut.png" alt="example" style="max-height: 300px"/>
+</p>
+
+<!-- Explain input and output values -->
+<p>
+   <strong>Вхідні дані:</strong> Рядок <span>(str{% if is_js %}ing{% endif %})</span>.
+</p>
+
+<p>
+   <strong>Вихідні дані:</strong> {% if is_js %}Масив{% else %}Ітерабельний{% endif %} <span>({% if is_js %}Array{% else %}Iterable{% endif %})</span> рядків <span>(str{% if is_js %}ing{% endif %})</span>. 
+</p>
+
+<p>
+    <strong>Приклади:</strong>
+</p>
+
+<pre class="brush: {% if is_js %}javascript{% else %}python{% endif %}">{{init_code_tmpl}}</pre>
+
+<!-- Here you can explain how it can be used in development -->
+<!-- The section is optional -->
+<p class="for_info_only">
+
+    <strong>Як використовується:</strong>
+    <ul>
+        <li><i>головоломки та ігри на кшталт Scrabble, де комбінації слів мають значення;</i></li>
+        <li><i>криптографія для перевірки можливих ключів за набором символів;</i></li>
+        <li><i>аналіз даних у генетиці для пошуку можливих комбінацій генів.</i></li>
+    </ul>
+</p>
+
+<!-- Here you can explain some constraints for input-->
+<!-- The section is optional -->
+<!-- <p>
+    <strong>Preconditions:</strong>
+    <ul>
+    <li><i>both given ints should be between -1000 and 1000</i></li>
+    </ul>
+</p> -->
