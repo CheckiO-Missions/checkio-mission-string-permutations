@@ -1,0 +1,45 @@
+<!-- Describe task in general -->
+
+<p>
+    Podając ciąg znaków, proszę zwrócić wszystkie możliwe <a target="_blank" href="https://en.wikipedia.org/wiki/Permutation">permutations</a> jego znaków, posortowane alfabetycznie.
+</p>
+
+<p style="text-align: center;">
+    <img  title="example" src="{{MEDIA}}all-permut.png" alt="example" style="max-height: 300px"/>
+</p>
+
+<!-- Explain input and output values -->
+<p>
+   <strong>Wejście:</strong> String <span>(str{% if is_js %}ing{% endif %})</span>.
+</p>
+
+<p>
+   <strong>Wyjście:</strong> {% if is_js %}Array{% else %}Iterable{% endif %} <span>({% if is_js %}Array{% else %}Iterable{% endif %})</span> ciągów znaków <span>(str{% if is_js %}ing{% endif %})</span>. 
+</p>
+
+<p>
+    <strong>Przykłady:</strong>
+</p>
+
+<pre class="brush: {% if is_js %}javascript{% else %}python{% endif %}">{{init_code_tmpl}}</pre>
+
+<!-- Here you can explain how it can be used in development -->
+<!-- The section is optional -->
+<p class="for_info_only">
+
+    <strong>Jak jest używany:</strong>
+    <ul>
+        <li><i>łamigłówki i gry takie jak Scrabble, w których kombinacje słów mają znaczenie;</i></li>
+        <li><i>kryptografia do testowania możliwych kluczy dla danego zestawu znaków;</i></li>
+        <li><i>analiza danych w genetyce pod kątem możliwych kombinacji genów.</i></li>
+    </ul>
+</p>
+
+<!-- Here you can explain some constraints for input-->
+<!-- The section is optional -->
+<!-- <p>
+    <strong>Preconditions:</strong>
+    <ul>
+    <li><i>both given ints should be between -1000 and 1000</i></li>
+    </ul>
+</p> -->
