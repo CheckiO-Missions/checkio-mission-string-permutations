@@ -1,0 +1,136 @@
+<body data-author="freeman_lex">
+<div class="question-answer">
+    <div class="question">
+        Nie mam pojęcia, jak zacząć rozwiązywać tę misję.
+    </div>
+    <div class="answer">
+        <p>
+            Proszę wpaść na jakiś pomysł 💡! Proszę zastosować podejście rekurencyjne. Iterujemy po podanym ciągu i dla każdego znaku łączymy pozostałe znaki, a dla krótszego ciągu wywołujemy funkcję ponownie. Proszę połączyć każdy zwrócony wariant ze znakiem powyżej i dodać wynik do ogólnej sekwencji, którą później posortujesz i zwrócisz. 
+        </p>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        Ok, od czego powinienem zacząć?
+    </div>
+    <div class="answer">
+        <p>
+            Po pierwsze, musi Pan zdefiniować przypadek brzegowy, gdy <b class="code">s</b> pozostaje równe 0 lub 1. W takim przypadku proszę po prostu zwrócić <b class="code">s</b>. 
+        </p>
+        <pre class="brush: javascript">
+if len(s) < 2: return [s]
+        </pre>
+        <p>
+            Proszę zadeklarować zmienną do przechowywania wszystkich permutacji z początkową wartością pustej tablicy.
+        </p>
+        <pre class="brush: javascript">
+const all = [];
+        </pre>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        Co robić dalej?
+    </div>
+    <div class="answer">
+        <p>
+            Teraz należy wykonać iterację po podanym ciągu znaków, aby uzyskać każdy znak za pomocą pętli <b class="code">for</b>. 
+        </p>
+        <pre class="brush: javascript">
+for (let i = 0; i < s.length; i++) {
+    ...
+}
+        </pre>
+        <p>
+            Proszę pobrać każdy znak i zbudować pozostały ciąg za pomocą <a target="_blank" href="https://www.w3schools.com/jsref/jsref_slice_string.asp">slicing</a>.
+        </p>
+        <pre class="brush: javascript">
+const char = s[i];
+const remainingChars = s.slice(0, i) + s.slice(i + 1);
+        </pre>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        Nadal potrzebuję podpowiedzi.
+    </div>
+    <div class="answer">
+        <p>
+            Teraz wewnątrz powyższej pętli należy utworzyć permutacje dla tego krótszego ciągu i iterować po każdej z nich. Proszę ponownie użyć pętli <b class="code">for</b> i wywołać tę samą funkcję.
+        </p>
+        <pre class="brush: javascript">
+for (const perm of stringPermutations(remainingChars)) {
+    ...
+}
+        </pre>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        Co powinienem teraz zrobić?
+    </div>
+    <div class="answer">
+        <p>
+            Proszę połączyć rozdzielony powyższy znak i każdą z permutacji <b class="code">perm</b> krótszego ciągu. W ten sposób poprzez zagnieżdżoną rekurencję zbudują Państwo wszystkie unikalne warianty. Proszę dodać wynik do ogólnej listy <b class="code">all</b>.  
+        </p>
+        <pre class="brush: javascript">
+all.push(char + perm);
+        </pre>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        Jak więc powinno wyglądać moje ostateczne rozwiązanie?
+    </div>
+    <div class="answer">
+        <p>
+            Wystarczy połączyć wszystkie poprzednie podpowiedzi, zwrócić posortowaną listę ogólną i zawinąć kod w wyrażenie funkcyjne. Używanie podpowiedzi typu dla danych wejściowych i wyjściowych jest wysoce zalecane.
+        </p>
+        <p>Oto całe rozwiązanie:</p>
+        <div class="spoiler">
+        <pre class="brush: javascript">
+function stringPermutations(s: string): string[] {
+
+    if (s.length <= 1) return [s];
+    const all = [];
+    for (let i = 0; i < s.length; i++) {
+        const char = s[i];
+        const remainingChars = s.slice(0, i) + s.slice(i + 1);
+        for (const perm of stringPermutations(remainingChars)) {
+            all.push(char + perm);
+        }
+    }
+    return all.sort();
+}
+        </pre>
+        </div>
+        <p>Proszę kliknąć <b>Best Solutions</b> w menu misji i zobaczyć wiele innych ciekawych rozwiązań!</p>
+    </div>
+</div>
+<!-- <div class="question-answer">
+    <div class="question">
+        Show me more solutions!<br />
+        'Cause I wanna be a real 🥇 Javascript Hero!
+    </div>
+    <div class="answer">
+        <p>Sure, grab it!</p>
+        <p>
+
+        </p>
+        <div class="spoiler">
+        <pre class="brush: javascript">
+
+        </pre>
+        </div>
+        <p>Click <b>Best Solutions</b> at mission menu and see a lot of other interesting solutions!</p>
+    </div>
+</div> -->
+<div class="question-answer">
+    <div class="question">
+        Dzięki! Teraz wiem i rozumiem więcej! Wszystko działa jak należy!
+    </div>
+    <div class="answer">
+        Miło mi to słyszeć 👍!
+    </div>
+</div>
+</body>
