@@ -1,0 +1,136 @@
+<body data-author="freeman_lex">
+<div class="question-answer">
+    <div class="question">
+        Ich habe keine Ahnung, wie ich mit der Lösung dieser Aufgabe beginnen soll.
+    </div>
+    <div class="answer">
+        <p>
+            Fangen Sie eine Idee 💡! Verwenden Sie einen rekursiven Ansatz. Iterieren Sie über die gegebene Zeichenkette und verketten Sie für jedes Zeichen die verbleibenden Zeichen und rufen Sie für eine kürzere Zeichenkette die Funktion erneut auf. Verbinden Sie jede zurückgegebene Variante mit dem obigen Zeichen und fügen Sie das Ergebnis in eine allgemeine Sequenz ein, die Sie später sortieren und zurückgeben. 
+        </p>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        Ok, womit soll ich beginnen?
+    </div>
+    <div class="answer">
+        <p>
+            Zunächst müssen Sie den Grenzfall definieren, wenn <b class="code">s</b> gleich 0 oder 1 bleibt. In diesem Fall geben Sie einfach <b class="code">s</b> zurück. 
+        </p>
+        <pre class="brush: javascript">
+if len(s) < 2: return [s]
+        </pre>
+        <p>
+            Deklarieren Sie eine Variable, um alle Ihre Permutationen mit dem Anfangswert eines leeren Arrays zu speichern.
+        </p>
+        <pre class="brush: javascript">
+const all = [];
+        </pre>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        Was ist als nächstes zu tun?
+    </div>
+    <div class="answer">
+        <p>
+            Jetzt müssen Sie die angegebene Zeichenkette iterativ durchlaufen, um jedes Zeichen mit der Schleife <b class="code">for</b> zu erhalten. 
+        </p>
+        <pre class="brush: javascript">
+for (let i = 0; i < s.length; i++) {
+    ...
+}
+        </pre>
+        <p>
+            Ermitteln Sie jedes Zeichen und erstellen Sie die verbleibende Zeichenkette mit <a target="_blank" href="https://www.w3schools.com/jsref/jsref_slice_string.asp">slicing</a>.
+        </p>
+        <pre class="brush: javascript">
+const char = s[i];
+const remainingChars = s.slice(0, i) + s.slice(i + 1);
+        </pre>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        Ich brauche noch einen Hinweis.
+    </div>
+    <div class="answer">
+        <p>
+            Innerhalb der obigen Schleife müssen Sie nun Permutationen für diese kürzere Zeichenkette erstellen und über jede von ihnen iterieren. Verwenden Sie erneut die Schleife <b class="code">for</b> und rufen Sie dieselbe Funktion auf.
+        </p>
+        <pre class="brush: javascript">
+for (const perm of stringPermutations(remainingChars)) {
+    ...
+}
+        </pre>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        Was soll ich jetzt tun?
+    </div>
+    <div class="answer">
+        <p>
+            Verketten Sie die oben getrennten Zeichen und jede der Permutationen <b class="code">perm</b> der kürzeren Zeichenfolge. Auf diese Weise bilden Sie durch verschachtelte Rekursion alle eindeutigen Varianten. Fügen Sie das Ergebnis in Ihre allgemeine Liste <b class="code">all</b> ein.  
+        </p>
+        <pre class="brush: javascript">
+all.push(char + perm);
+        </pre>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        Wie sollte also meine endgültige Lösung aussehen?
+    </div>
+    <div class="answer">
+        <p>
+            Sie müssen nur alle vorherigen Hinweise zusammenführen, eine sortierte allgemeine Liste zurückgeben und Ihren Code in einen Funktionsausdruck verpacken. Die Verwendung von Typ-Hinweisen für Eingabe- und Ausgabedaten wird dringend empfohlen.
+        </p>
+        <p>Hier ist die gesamte Lösung:</p>
+        <div class="spoiler">
+        <pre class="brush: javascript">
+function stringPermutations(s: string): string[] {
+
+    if (s.length <= 1) return [s];
+    const all = [];
+    for (let i = 0; i < s.length; i++) {
+        const char = s[i];
+        const remainingChars = s.slice(0, i) + s.slice(i + 1);
+        for (const perm of stringPermutations(remainingChars)) {
+            all.push(char + perm);
+        }
+    }
+    return all.sort();
+}
+        </pre>
+        </div>
+        <p>Klicken Sie auf <b>Best Solutions</b> im Menü Mission und sehen Sie sich viele andere interessante Lösungen an!</p>
+    </div>
+</div>
+<!-- <div class="question-answer">
+    <div class="question">
+        Show me more solutions!<br />
+        'Cause I wanna be a real 🥇 Javascript Hero!
+    </div>
+    <div class="answer">
+        <p>Sure, grab it!</p>
+        <p>
+
+        </p>
+        <div class="spoiler">
+        <pre class="brush: javascript">
+
+        </pre>
+        </div>
+        <p>Click <b>Best Solutions</b> at mission menu and see a lot of other interesting solutions!</p>
+    </div>
+</div> -->
+<div class="question-answer">
+    <div class="question">
+        Vielen Dank! Ich weiß und verstehe jetzt mehr! Alles funktioniert einwandfrei!
+    </div>
+    <div class="answer">
+        Freut mich zu hören 👍!
+    </div>
+</div>
+</body>

@@ -1,0 +1,45 @@
+<!-- Describe task in general -->
+
+<p>
+    Gibt alle möglichen <a target="_blank" href="https://en.wikipedia.org/wiki/Permutation">permutations</a> der Zeichen einer Zeichenkette zurück, alphabetisch sortiert.
+</p>
+
+<p style="text-align: center;">
+    <img  title="example" src="{{MEDIA}}all-permut.png" alt="example" style="max-height: 300px"/>
+</p>
+
+<!-- Explain input and output values -->
+<p>
+   <strong>Eingabe:</strong> Zeichenkette <span>(str{% if is_js %}ing{% endif %})</span>.
+</p>
+
+<p>
+   <strong>Ausgabe:</strong> {% if is_js %}Array{% else %}Iterable{% endif %} <span>({% if is_js %}Array{% else %}Iterable{% endif %})</span> von Zeichenketten <span>(str{% if is_js %}ing{% endif %})</span>. 
+</p>
+
+<p>
+    <strong>Beispiele:</strong>
+</p>
+
+<pre class="brush: {% if is_js %}javascript{% else %}python{% endif %}">{{init_code_tmpl}}</pre>
+
+<!-- Here you can explain how it can be used in development -->
+<!-- The section is optional -->
+<p class="for_info_only">
+
+    <strong>Wie es verwendet wird:</strong>
+    <ul>
+        <li><i>puzzles und Spiele wie Scrabble, bei denen Wortkombinationen wichtig sind;</i></li>
+        <li><i>kryptographie zum Testen möglicher Schlüssel aus einer Reihe von Zeichen;</i></li>
+        <li><i>datenanalyse in der Genetik für mögliche Genkombinationen.</i></li>
+    </ul>
+</p>
+
+<!-- Here you can explain some constraints for input-->
+<!-- The section is optional -->
+<!-- <p>
+    <strong>Preconditions:</strong>
+    <ul>
+    <li><i>both given ints should be between -1000 and 1000</i></li>
+    </ul>
+</p> -->
